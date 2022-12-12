@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MyFinance</string>
+    <string name="transaction1">10.000</string>
+    <string name="transaction2">10.000</string>
+    <string name="transaction3">10.000</string>
+    <string name="transaction4">10.000</string>
+    <string name="transaction5">10.000</string>
+    <string name="transaction6">10.000</string>
+    <string name="transaction7">10.000</string>
+
+    <string name="category1">Food</string>
+    <string name="category2">Bill</string>
+    <string name="category3">Shopping</string>
+    <string name="category4">Food</string>
+    <string name="category5">Beverage</string>
+    <string name="category6">PayDay</string>
+    <string name="category7">Food</string>
+</resources>
