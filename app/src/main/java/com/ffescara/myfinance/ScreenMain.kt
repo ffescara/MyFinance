@@ -1,12 +1,13 @@
 package com.ffescara.myfinance
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,14 +22,19 @@ import com.ffescara.myfinance.model.Transaction
 @Composable
 fun ScreenMain(navController: NavController) {
     Scaffold(topBar = {
-        TopAppBar() {
+        TopAppBar(
+            backgroundColor = colorResource(id = R.color.white),
+            contentColor = colorResource(id = R.color.black)
+        ) {
             //bisa tambah icon
             Text(
                 text = "MyWallet",
                 fontSize = 24.sp
             )
         }
-    }) {
+    },
+        bottomBar = { BottomNavigation(navController = navController)}
+    ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
@@ -58,6 +64,36 @@ fun ScreenMain(navController: NavController) {
                 }
             }
 
+            Card(
+                elevation = 8.dp,
+                modifier = Modifier.padding(8.dp)
+            ) {
+                Row() {
+                    Button(
+                        onClick = {
+                            navController.navigate(NavRoute.screen_transaction.name)
+                        },
+                        colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.white))
+                        //modifier = Modifier.background(color = Color.White)
+                    ) {
+                        Text(
+                            modifier = Modifier.weight(5f),
+                            text = "Latest Transaction",
+                            style = MaterialTheme.typography.h5,
+                        )
+                        Text(
+                            modifier = Modifier.weight(1f),
+                            text = ">",
+                            style = MaterialTheme.typography.h5,
+                            textAlign = TextAlign.Center,
+
+                            )
+                    }
+
+                }
+            }
+
+
             Column(modifier = Modifier.weight(3f)){
                     Transaksi(transaction = ListTransaction().loadTransaction())
             }
@@ -70,7 +106,7 @@ fun ScreenMain(navController: NavController) {
 fun Transaksi(transaction: List<Transaction>) {
     Column() {
         transaction.forEach { transaction ->
-            TransactionCard(transaction)
+            TransactionCard(transaction = transaction)
         }
     }
 }
@@ -81,25 +117,30 @@ fun TransactionCard(transaction: Transaction) {
         elevation = 8.dp,
         modifier = Modifier.padding(8.dp)
     ) {
-        Column() {
-            Row(modifier = Modifier.width(350.dp)) {
+        Row() {
+            Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = stringResource(id = transaction.categoryResourceId),
-                    modifier = Modifier.padding(8.dp).weight(1f),
-                    style = MaterialTheme.typography.h6
+                    text = transaction.category,
+                    style = MaterialTheme.typography.h6,
                 )
                 Text(
-                    text = stringResource(id = transaction.textResourceId),
-                    modifier = Modifier.padding(8.dp).weight(1f),
+                    text = transaction.date,
                     style = MaterialTheme.typography.h6,
-                    textAlign = TextAlign.Right
                 )
             }
+            Spacer(modifier = Modifier.width(30.dp))
+            Text(
+                text = transaction.amount,
+                style = MaterialTheme.typography.h6,
+                textAlign = TextAlign.Right,
+                modifier = Modifier.weight(1f)
+            )
         }
+
     }
 }
 
-@Preview(showSystemUi = true)
+@Preview(showSystemUi = true, showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun ScreenMainPreview() {
     ScreenMain(rememberNavController())

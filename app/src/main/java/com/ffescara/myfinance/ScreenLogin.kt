@@ -30,8 +30,8 @@ fun ScreenLogin(navController: NavController) {
         var email by remember { mutableStateOf(TextFieldValue()) }
         var password by remember { mutableStateOf(TextFieldValue()) }
 
-        Text(text = "MyFinance", style = TextStyle(fontSize = 40.sp, fontFamily = FontFamily.Cursive))
-
+        Text(text = "MyFinance", style = TextStyle(fontSize = 34.sp, fontFamily = FontFamily.Monospace))
+        Spacer(modifier = Modifier.height(20.dp))
         OutlinedTextField(
             value = email,
             onValueChange = {email = it},

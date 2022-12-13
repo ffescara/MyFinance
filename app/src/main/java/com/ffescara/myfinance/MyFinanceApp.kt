@@ -18,5 +18,25 @@ fun MyFinanceApp() {
         composable(NavRoute.screen_main.name) {
             ScreenMain(navController)
         }
+        composable(NavRoute.screen_transaction.name) {
+            ScreenTransaction(navController)
+        }
+
+        //Bottom Nav
+        composable(BottomNavItem.Home.screen_route) {
+            ScreenMain(navController)
+        }
+        composable(BottomNavItem.Transaction.screen_route) {
+            ScreenTransaction(navController)
+        }
+        composable(BottomNavItem.New.screen_route) {
+            ScreenMain(navController)
+        }
+        composable(BottomNavItem.Category.screen_route) {
+            ScreenMain(navController)
+        }
+        composable(BottomNavItem.Profile.screen_route) {
+            ScreenMain(navController)
+        }
     }
 }
