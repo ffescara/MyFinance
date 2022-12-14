@@ -2,7 +2,6 @@ package com.ffescara.myfinance
 
 import android.annotation.SuppressLint
 import android.content.res.Configuration
-import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -17,7 +16,6 @@ import com.ffescara.myfinance.data.ListTransaction
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun ScreenTransaction(navController: NavController) {
-
     Scaffold(topBar = {
         TopAppBar(
             backgroundColor = colorResource(id = R.color.white),
@@ -32,11 +30,8 @@ fun ScreenTransaction(navController: NavController) {
     },
         bottomBar = { BottomNavigation(navController = navController)}
     ) {
-        Column(){
-            Transaksi(transaction = ListTransaction().loadTransaction())
-        }
+        Transaksi(transaction = ListTransaction().loadTransaction())
     }
-
 }
 
 @Preview(showSystemUi = true, showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)

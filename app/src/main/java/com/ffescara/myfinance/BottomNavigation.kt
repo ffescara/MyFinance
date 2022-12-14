@@ -18,8 +18,7 @@ fun BottomNavigation(navController: NavController) {
         BottomNavItem.Home,
         BottomNavItem.Transaction,
         BottomNavItem.New,
-        BottomNavItem.Category,
-        BottomNavItem.Profile
+        BottomNavItem.Category
     )
 
     androidx.compose.material.BottomNavigation(
@@ -42,7 +41,7 @@ fun BottomNavigation(navController: NavController) {
 
                         navController.graph.startDestinationRoute?.let { screen_route ->
                             popUpTo(screen_route) {
-                                saveState = true
+                                //saveState = true
                             }
                         }
                         launchSingleTop = true

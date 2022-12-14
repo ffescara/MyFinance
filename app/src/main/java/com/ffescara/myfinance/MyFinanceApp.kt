@@ -30,13 +30,10 @@ fun MyFinanceApp() {
             ScreenTransaction(navController)
         }
         composable(BottomNavItem.New.screen_route) {
-            ScreenMain(navController)
+            ScreenAdd(navController)
         }
         composable(BottomNavItem.Category.screen_route) {
-            ScreenMain(navController)
-        }
-        composable(BottomNavItem.Profile.screen_route) {
-            ScreenMain(navController)
+            ScreenCategory(navController)
         }
     }
 }
