@@ -63,6 +63,7 @@ fun ScreenMain(navController: NavController) {
                 Text("500.000", fontWeight = FontWeight.Bold, fontFamily = fonts, fontSize = 30.sp)
 
             }
+
             Text(
                 text = "Total Balance",
                 fontFamily = fonts,
