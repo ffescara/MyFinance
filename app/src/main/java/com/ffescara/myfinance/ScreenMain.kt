@@ -112,7 +112,7 @@ fun ScreenMain(navController: NavController) {
                 .weight(3f)
                 .padding(8.dp)
             ){
-                Transaksi(transaction = ListTransaction().loadTransaction().take(5))
+                Transaksi(transaction = ListTransaction().loadTransaction().sortedByDescending { it.id }.take(5))
             }
         }
     }
@@ -132,11 +132,11 @@ fun Transaksi(transaction: List<Transaction>) {
 fun TransactionCard(transaction: Transaction) {
     Spacer(modifier = Modifier.padding(5.dp))
     Row() {
-        Image(painter = painterResource(id = R.drawable.icons8_wallet_48), contentDescription = "", Modifier.size(40.dp))
+        Image(painter = painterResource(id = transaction.category.icon), contentDescription = "", Modifier.size(40.dp))
         Spacer(modifier = Modifier.width(5.dp))
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                text = transaction.category,
+                text = transaction.category.nama,
                 fontFamily = fonts,
                 fontSize = 18.sp
             )

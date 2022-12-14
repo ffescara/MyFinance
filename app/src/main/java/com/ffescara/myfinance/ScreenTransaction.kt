@@ -30,7 +30,7 @@ fun ScreenTransaction(navController: NavController) {
     },
         bottomBar = { BottomNavigation(navController = navController)}
     ) {
-        Transaksi(transaction = ListTransaction().loadTransaction())
+        Transaksi(transaction = ListTransaction().loadTransaction().sortedByDescending { it.id })
     }
 }
 
